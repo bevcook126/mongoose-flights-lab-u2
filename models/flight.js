@@ -19,16 +19,15 @@ const flightSchema = new Schema({
     departs: {
         type: Date,
         default: function() {
-            let date = new Date()
-            let day = date.getDate();
-            let month = date.getMonth()+1;
-            let year = date.getFullYear()+1;
-            let fullDate = `${day}.${month}.${year}.`;
-            return fullDate
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth();
+            var day = d.getDate();
+            var c = new Date(year + 1, month, day); 
+            return c;
         }
-    }
-
-
+    },
 });
 
 module.exports = mongoose.model('Flight', flightSchema);
+
