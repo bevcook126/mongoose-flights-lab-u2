@@ -56,3 +56,7 @@ form > label > select, form > label > input {
 #show-page {
   margin-top: 20px;
 }
+
+#destination {
+  margin-top: 20px;
+}

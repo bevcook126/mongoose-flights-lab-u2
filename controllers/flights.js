@@ -31,13 +31,11 @@ function index(req, res) {
         flights.sort((a,b) => Number(a.departs) - Number(b.departs));
         res.render('flights/index', { flights });
     });
-    // if (departs > flight.departs){
-    //     let flight = '<p style="color: red;">'
-    // } 
 }
 
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
+        flight.destinations.sort((a,b) => Number(a.arrival) - Number(b.arrival));
       res.render('flights/show', { title: 'Flight Detail', flight });
     });
   }

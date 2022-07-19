@@ -1,37 +1,35 @@
 <%- include('../partials/header') %>
 
+<h1>Flight Information</h1>
+
 <section id="show-page">
-  <div>Flight Number: </div>
-  <div><%= flight.flightNo %></div>
-  <div>Departure Date: </div>
-  <div><%= flight.departs %></div>
-  <div>Airline </div>
-  <div><%= flight.airline %></div>
-  <div>Airport </div>
-  <div><%= flight.airport %></div>
+  <div>Flight Number: <%= flight.flightNo %></div>
+  <div>Departure Date: <%= flight.departs %></div>
+  <div>Airline: <%= flight.airline %></div>
+  <div>Airport: <%= flight.airport %></div>
 </section>
 
 <br><br><h2>Add Destination</h2>
 <form id="add-destination-form" method="POST"
   action="/flights/<%= flight._id %>/destinations">
   <label>Airport:</label>
-  <select name="airport">
-    <option value="AUS">AUS</option>
-    <option value="DFW">DFW</option>
-    <option value="LAX">LAX</option>
-    <option value="SAN">SAN</option>
-    <option value="DEN" selected>DEN</option>
+<select name="airport">
+
+    <% ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'].forEach(function(d) { %>
+        <% if (flight.airport === d) { %>
+        <% } else if (!flight.destinations.some(dest => dest.airport === d)) {%>
+    <option value="<%= d %>"><%= d %></option>
+   <% } %>
+   <% }) %>
   </select>
   <input type="datetime-local" name="arrival" value="<%=  %>">
   <input type="submit" value="Add Destination">
 </form>
-
-<table>
+<table id="destination">
     <thead>
       <tr>
-        <th>Date</th>
         <th>Airport</th>
-        <th>Arrival Time</th>
+        <th>Arrival Date & Time</th>
       </tr>
     </thead>
     <tbody>
