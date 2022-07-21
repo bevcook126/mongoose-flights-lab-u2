@@ -7,14 +7,35 @@
   <div>Departure Date: <%= flight.departs %></div>
   <div>Airline: <%= flight.airline %></div>
   <div>Airport: <%= flight.airport %></div>
-</section>
+  <h4>Add Ticket</h4>
+  <form id="add-ticket-form" action="/flights/<%= flight._id %>/tickets/new">
+    <input type="submit" value="Add Ticket"></input>
+  </form>
+  
+  <h5>Tickets</h5>
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% tickets.forEach(function(t) { %>
+          <td><%= t.seat %></td>
+          <td><%= '$' + t.price %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </section>
 
 <br><br><h2>Add Destination</h2>
 <form id="add-destination-form" method="POST"
   action="/flights/<%= flight._id %>/destinations">
   <label>Airport:</label>
 <select name="airport">
-
     <% ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'].forEach(function(d) { %>
         <% if (flight.airport === d) { %>
         <% } else if (!flight.destinations.some(dest => dest.airport === d)) {%>
