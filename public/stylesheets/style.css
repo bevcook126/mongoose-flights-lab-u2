@@ -27,15 +27,37 @@ table {
   margin: auto;
 }
 
-th {
+th, td {
   padding: 10px;
 }
 
-td {
-  padding: 10px;
+#destinationform {
+  display: flex;
+  justify-content: center;
+  background: white;
+  width: 200px;
+  margin: auto;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
 }
 
-form, #show-page {
+form > label {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+form > label > select, form > label > input, #show-page, #destination, #buyticket {
+  margin-top: 20px;
+}
+
+.tickets {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tickets > div, #newflight {
   border: solid 3px black;
   border-radius: 20px;
   background: white;
@@ -43,20 +65,3 @@ form, #show-page {
   font-size: 18px;
 }
 
-form > label {
-  border: solid 3px black;
-  border-radius: 10px;
-  padding: 5px;
-}
-
-form > label > select, form > label > input {
-  margin-top: 20px;
-}
-
-#show-page {
-  margin-top: 20px;
-}
-
-#destination {
-  margin-top: 20px;
-}
